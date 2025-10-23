@@ -1,7 +1,63 @@
 .property-info {
+  background-color: white;
+  padding: 0.5em;
+}
+
+.general-info {
   display: grid;
   grid-template-columns: 1fr 3fr;
   column-gap: 3.2rem;
-  font-size: 14px;
-  background-color: white;
+  font-size: 0.9rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 1fr; /*repeat(1, 1fr);*/
+  gap: 0.5rem;
+  padding: 1.5em 1.2em;
+  border: 1px solid #e2e2e2;
+  border-top: none;
+  font-size: 0.8rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.collapsible {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-weight: inherit;
+  border: 1px solid #e2e2e2;
+  margin-top: 5px;
+}
+
+.collapsible.open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+button .icon {
+  padding: 2px 15px 0 0;
+}
+
+.chevron {
+  float: right;
+  padding-top: 2px;
+}
+
+button:hover,
+button:focus {
+  border-color: #e2e2e2;
+  outline: none;
+}
+
+button {
+  padding: 0.4em 1em;
+  border-radius: 5px;
+}
+
+.empty {
+  visibility: hidden;
 }
