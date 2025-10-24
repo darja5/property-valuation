@@ -12,6 +12,7 @@ export const location = {
       plZone: 'Kα5, Kα6',
       value: 32000,
       property: 'parcel',
+      coords: { lat: 46.0439, lng: 14.4875 },
     },
     {
       regNumber: '#8/909',
@@ -19,6 +20,7 @@ export const location = {
       plZone: 'Kα5',
       value: 50000,
       property: 'parcel',
+      coords: { lat: 46.05836, lng: 14.52001 },
     },
   ],
   units: [
@@ -29,6 +31,7 @@ export const location = {
       plZone: 'Kα5, Kα6',
       value: 165100,
       property: 'building',
+      coords: { lat: 46.05108, lng: 14.50513 },
     },
     {
       regNumber: '#8/3221',
@@ -37,6 +40,7 @@ export const location = {
       plZone: 'Kα5',
       value: 158100,
       property: 'building',
+      coords: { lat: 46.05695, lng: 14.50575 },
     },
     {
       regNumber: '#8/3222',
@@ -45,6 +49,7 @@ export const location = {
       plZone: 'Kα5',
       value: 158100,
       property: 'building',
+      coords: { lat: 46.04982, lng: 14.50678 },
     },
   ],
 };
