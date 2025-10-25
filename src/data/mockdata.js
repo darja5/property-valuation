@@ -4,6 +4,7 @@ export const location = {
     district: 'Lefkosia',
     municipality: 'Strovolos',
     quarter: 'Agios Vasileios',
+    coords: { lat: 46.0471444, lng: 14.5283941 },
   },
   land: [
     {

@@ -1,5 +1,6 @@
 .sidebar {
   overflow: scroll;
+  position: relative;
 }
 
 .estimates {
@@ -22,4 +23,33 @@
 
 .estimates .collapsible {
   border: 1px solid #e2e2e2;
+}
+
+.valuationToolbar {
+  background-color: white;
+  border-top: 1px solid #e2e2e2;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0.5em;
+  box-sizing: border-box;
+  font-size: 0.9em;
+}
+
+.edit {
+  padding-left: 5px;
+  width: 15px;
+}
+
+.actionBar {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 0.5em;
+}
+
+.actionBar button {
+  flex: 1;
+  font-size: 0.8em;
 }

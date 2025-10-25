@@ -3,6 +3,8 @@ import Collapsible from './Collapsible';
 import VectorSquare from '../icons/vector-square.svg';
 import Building from '../icons/buildings.svg';
 import Pin from '../icons/pin.svg';
+import History from '../icons/history.svg';
+import Button from './Button';
 
 export default function PropertyInfo({ location, handleFlyTo }) {
   const generalLabels = ['reg. num', 'district', 'municipality', 'quarter'];
@@ -18,12 +20,25 @@ export default function PropertyInfo({ location, handleFlyTo }) {
           let label = item.toUpperCase();
           return (
             <>
+              {i == 0 && (
+                <Button icon={History} label="History" className="btnHistory" />
+              )}
               <label key={i} className="info-label">
                 {label}
               </label>
-              <div key={i + 'i'} className="info-value">
-                {value}
+              <div key={item} className="info-value">
+                {value}{' '}
+                {i == 0 && (
+                  <a
+                    className="details"
+                    onClick={() => handleFlyTo(location.generalInfo.coords)}
+                  >
+                    DETAILS
+                  </a>
+                )}
               </div>
+              <div className="empty"></div>
+              <div className="empty"></div>
             </>
           );
         })}
@@ -41,7 +56,9 @@ export default function PropertyInfo({ location, handleFlyTo }) {
             <div>{item.plZone}</div>
             <div className="empty" />
             <div className="last-item">
-              <a onClick={() => handleFlyTo(item.coords)}>DETAILS</a>
+              <a className="details" onClick={() => handleFlyTo(item.coords)}>
+                DETAILS
+              </a>
               <img src={Pin} alt="Pin" className="pin" />
             </div>
           </>
@@ -60,7 +77,9 @@ export default function PropertyInfo({ location, handleFlyTo }) {
             <div>{item.extents}</div>
             <div>{item.plZone}</div>
             <div className="last-item">
-              <a onClick={() => handleFlyTo(item.coords)}>DETAILS</a>
+              <a className="details" onClick={() => handleFlyTo(item.coords)}>
+                DETAILS
+              </a>
               <img src={Pin} alt="Pin" className="pin" />
             </div>
           </>
