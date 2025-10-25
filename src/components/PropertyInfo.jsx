@@ -4,7 +4,7 @@ import VectorSquare from '../icons/vector-square.svg';
 import Building from '../icons/buildings.svg';
 import Pin from '../icons/pin.svg';
 
-export default function PropertyInfo({ location }) {
+export default function PropertyInfo({ location, handleFlyTo }) {
   const generalLabels = ['reg. num', 'district', 'municipality', 'quarter'];
 
   return (
@@ -41,8 +41,8 @@ export default function PropertyInfo({ location }) {
             <div>{item.plZone}</div>
             <div className="empty" />
             <div className="last-item">
-              <a>DETAILS</a>
-              <img src={Pin} alt="Pin" className="icon" />
+              <a onClick={() => handleFlyTo(item.coords)}>DETAILS</a>
+              <img src={Pin} alt="Pin" className="pin" />
             </div>
           </>
         )}
@@ -60,8 +60,8 @@ export default function PropertyInfo({ location }) {
             <div>{item.extents}</div>
             <div>{item.plZone}</div>
             <div className="last-item">
-              <a>DETAILS</a>
-              <img src={Pin} alt="Pin" className="icon" />
+              <a onClick={() => handleFlyTo(item.coords)}>DETAILS</a>
+              <img src={Pin} alt="Pin" className="pin" />
             </div>
           </>
         )}

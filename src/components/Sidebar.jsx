@@ -2,19 +2,26 @@ import PropertyInfo from './PropertyInfo';
 import { location } from '../data/mockdata';
 import Collapsible from './Collapsible';
 import './Sidebar.css';
+import Cancel from '../icons/cancel.svg';
 import Info from '../icons/info.svg';
-import ChevronDown from '../icons/chevron-down.svg';
 
-export default function Sidebar() {
+export default function Sidebar({ handleFlyTo }) {
+  const allProperties = [...location.land, ...location.units];
+  const totalValue = allProperties.reduce(
+    (sum, item) => sum + Number(item.value),
+    0
+  );
   return (
     <div className="sidebar">
-      <PropertyInfo location={location} onSelectLocation />
+      <PropertyInfo location={location} handleFlyTo={handleFlyTo} />
       <div className="estimates">
         <Collapsible
           buttonLabel="Method"
-          icon={ChevronDown}
-          properties={location.land}
+          icon={Cancel}
+          properties={allProperties}
           columns={['reg. num', 'property', 'plZone', '', 'value']}
+          iconLeft={false}
+          totalValue={totalValue}
           renderRow={(item) => (
             <>
               <div>{item.regNumber}</div>
@@ -22,14 +29,14 @@ export default function Sidebar() {
               <div>{item.plZone}</div>
               <div className="empty" />
               <div className="last-item">
-                {item.value}
-                <img src={Info} alt="Info" className="icon" width={16} />
+                {item.value.toLocaleString()} €
+                <img src={Info} alt="Info" className="info" width={16} />
               </div>
             </>
           )}
         />
       </div>
-      PropertyValue
+      <div>{totalValue.toLocaleString()} € </div>
       <br />
       ActionButtons
       <br />

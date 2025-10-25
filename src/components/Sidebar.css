@@ -5,3 +5,21 @@
 .estimates {
   padding: 0.5em;
 }
+
+.estimates .content {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.estimates .collapsible {
+  padding: 0.3em 0.5em;
+}
+
+.estimates .contentInfo,
+.estimates .contentSummary {
+  padding: 0.5em 0.7em;
+}
+
+.estimates .collapsible {
+  border: 1px solid #e2e2e2;
+}
