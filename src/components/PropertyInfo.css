@@ -4,34 +4,28 @@
   position: relative;
 }
 
-.property-info div:last-child {
+.estimates .collapsibleContent,
+.collapsibleContent .contentInfo,
+.property-info .collapsibleContent:last-child,
+.property-info .collapsibleButton:last-of-type {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-.property-info div:last-child .contentInfo {
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.property-info button {
+.property-info .collapsibleButton {
   border-radius: 0px;
   margin-top: 0;
+  border-top: 0;
 }
 
-.property-info .collapsible:first-of-type {
+.property-info .collapsibleButton:first-of-type {
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   margin-top: 0.5em;
   border: 1px solid #e2e2e2;
 }
 
-.property-info .collapsible:last-of-type {
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-.property-info .collapsible.open {
+.property-info .collapsibleButton.open {
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
 }
@@ -48,9 +42,10 @@
   border: 1px solid #e2e2e2;
   border-radius: 3px;
   float: right;
+  border: 1px solid #6969698f;
 }
 
-.content {
+.collapsibleContent {
   border: 1px solid #e2e2e2;
   border-top: none;
   font-size: 0.7rem;
@@ -64,7 +59,7 @@
   background-color: white;
 }
 
-.collapsible {
+.collapsibleButton {
   cursor: pointer;
   width: 100%;
   border: none;
@@ -72,15 +67,14 @@
   outline: none;
   font-weight: inherit;
   border: 1px solid #e2e2e2;
-  border-top: 0;
   color: black;
 }
 
-.collapsible .label {
+.collapsibleButton .label {
   font-size: 0.7em;
 }
 
-.collapsible.open {
+.collapsibleButton.open {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }

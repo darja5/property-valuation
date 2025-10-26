@@ -19,7 +19,7 @@ export default function Collapsible({
     <>
       <button
         type="button"
-        className={`collapsible ${isOpen ? 'open' : ''}`}
+        className={`collapsibleButton ${isOpen ? 'open' : ''}`}
         onClick={() => setIsOpen((prev) => !prev)}
       >
         <img
@@ -42,7 +42,7 @@ export default function Collapsible({
       </button>
 
       {isOpen && (
-        <div className="content">
+        <div className="collapsibleContent">
           <div className="contentInfo">
             {columns.map((label) => (
               <div key={label}>{label.toUpperCase()}</div>

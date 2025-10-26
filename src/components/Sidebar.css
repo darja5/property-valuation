@@ -1,6 +1,12 @@
 .sidebar {
-  overflow: scroll;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #f2f2f2;
+  width: 35%;
+  min-width: 400px;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .estimates {
@@ -28,7 +34,6 @@
 .valuationToolbar {
   background-color: white;
   border-top: 1px solid #e2e2e2;
-  position: absolute;
   bottom: 0;
   width: 100%;
   padding: 0.5em;
@@ -52,4 +57,9 @@
 .actionBar button {
   flex: 1;
   font-size: 0.8em;
+  white-space: nowrap;
+}
+
+.propertyData {
+  overflow: scroll;
 }

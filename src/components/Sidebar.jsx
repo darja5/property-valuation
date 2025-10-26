@@ -19,29 +19,32 @@ export default function Sidebar({ handleFlyTo }) {
   );
   return (
     <div className="sidebar">
-      <PropertyInfo location={location} handleFlyTo={handleFlyTo} />
-      <div className="estimates">
-        <Collapsible
-          buttonLabel="Method"
-          icon={Cancel}
-          properties={allProperties}
-          columns={['reg. num', 'property', 'plZone', '', 'value']}
-          iconLeft={false}
-          totalValue={totalValue}
-          renderRow={(item) => (
-            <>
-              <div>{item.regNumber}</div>
-              <div>{item.property}</div>
-              <div>{item.plZone}</div>
-              <div className="empty" />
-              <div className="last-item">
-                {item.value.toLocaleString()} €
-                <img src={Info} alt="Info" className="info" width={16} />
-              </div>
-            </>
-          )}
-        />
+      <div className="propertyData">
+        <PropertyInfo location={location} handleFlyTo={handleFlyTo} />
+        <div className="estimates">
+          <Collapsible
+            buttonLabel="Method"
+            icon={Cancel}
+            properties={allProperties}
+            columns={['reg. num', 'property', 'plZone', '', 'value']}
+            iconLeft={false}
+            totalValue={totalValue}
+            renderRow={(item) => (
+              <>
+                <div>{item.regNumber}</div>
+                <div>{item.property}</div>
+                <div>{item.plZone}</div>
+                <div className="empty" />
+                <div className="last-item">
+                  {item.value.toLocaleString()} €
+                  <img src={Info} alt="Info" className="info" width={16} />
+                </div>
+              </>
+            )}
+          />
+        </div>
       </div>
+
       <div className="valuationToolbar">
         <div>
           Value

@@ -24,6 +24,7 @@
 .btnRemarks {
   background: #cdaa7d;
 }
+
 .btnRemarks img {
   top: 3px;
 }
@@ -36,4 +37,15 @@
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+  font-size: 0.9em;
+}
+
+.btnAdd {
+  font-size: 0.9em;
+  width: 100%;
+  border: 1px solid #6969698f;
+  margin-top: 10px;
+  font-size: 0.8rem;
+  font-weight: unset;
+  border-radius: 3px;
 }
