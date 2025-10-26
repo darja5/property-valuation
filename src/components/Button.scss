@@ -1,0 +1,77 @@
+@import '../styles/variables';
+
+.actionButton {
+  color: var(--color-text-white);
+
+  &.chat {
+    top: 3px;
+  }
+
+  &.btnBack {
+    color: var(--color-text);
+    background-color: var(--color-bg-primary);
+  }
+
+  &.btnExplantion {
+    background: #9ba17b;
+  }
+
+  &.btnRemarks {
+    background: #cdaa7d;
+
+    img {
+      top: 3px;
+    }
+  }
+
+  &.btnConfirm {
+    background: #4b6043;
+  }
+}
+
+.icon {
+  padding-right: 5px;
+  position: relative;
+  top: 2px;
+  width: 13px;
+}
+
+.btnHistory {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.9em;
+  border: 1px solid var(--color-border-dark);
+}
+
+.btnAdd {
+  font-size: 0.9em;
+  width: 100%;
+  border: 1px solid var(--color-border-dark);
+  margin-top: 10px;
+  font-size: 0.8rem;
+  font-weight: unset;
+  border-radius: 3px;
+}
+
+.btnAdd,
+.btnHistory {
+  &:hover,
+  &:focus {
+    border: 1px solid var(--color-border-dark);
+  }
+}
+
+.btnTheme {
+  float: right;
+  margin-right: 5px;
+  border: 1px solid var(--color-border-dark);
+  color: var(--color-text);
+  background-color: var(--color-bg-secundary);
+  font-size: 0.8rem;
+  font-weight: unset;
+  &:hover,
+  &:focus {
+    border: 1px solid var(--color-border-dark);
+  }
+}

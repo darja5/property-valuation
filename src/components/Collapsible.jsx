@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import '../components/PropertyInfo.css';
+import '../components/PropertyInfo.scss';
 import ChevronUp from '../icons/chevron-up.svg';
+import ChevronUpWhite from '../icons/chevron-up-white.svg';
 import ChevronDown from '../icons/chevron-down.svg';
-import Cancel from '../icons/cancel.svg';
+import ChevronDownWhite from '../icons/chevron-down-white.svg';
 
 export default function Collapsible({
   buttonLabel,
@@ -15,6 +16,8 @@ export default function Collapsible({
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  let currentTheme = localStorage.getItem('theme');
+
   return (
     <>
       <button
@@ -24,7 +27,17 @@ export default function Collapsible({
       >
         <img
           className={`icon left ${iconLeft ? '' : 'chevron'}`}
-          src={iconLeft ? icon : isOpen ? ChevronUp : ChevronDown}
+          src={
+            iconLeft
+              ? icon
+              : isOpen
+                ? currentTheme === 'light'
+                  ? ChevronUp
+                  : ChevronUpWhite
+                : currentTheme === 'light'
+                  ? ChevronDown
+                  : ChevronDownWhite
+          }
           alt=""
           width="16"
         />
@@ -35,7 +48,17 @@ export default function Collapsible({
 
         <img
           className={`icon right ${iconLeft ? 'chevron' : ''}`}
-          src={iconLeft ? (isOpen ? ChevronUp : ChevronDown) : icon}
+          src={
+            iconLeft
+              ? isOpen
+                ? currentTheme === 'light'
+                  ? ChevronUp
+                  : ChevronUpWhite
+                : currentTheme === 'light'
+                  ? ChevronDown
+                  : ChevronDownWhite
+              : icon
+          }
           alt=""
           width="16"
         />

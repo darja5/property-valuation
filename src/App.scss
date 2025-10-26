@@ -1,9 +1,12 @@
+@import './styles/variables';
+
 #root {
   height: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
+  color: var(--color-text);
 }
 
 .page {
@@ -15,7 +18,12 @@
 
 header {
   height: 35px;
-  background-color: #696969;
+  background-color: var(--color-bg-secundary);
+  display: flex;
+  height: 35px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .main-layout {

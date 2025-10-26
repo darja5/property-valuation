@@ -1,8 +1,10 @@
+@import '../styles/variables';
+
 .sidebar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #f2f2f2;
+  background: var(--color-bg-secundary);
   width: 35%;
   min-width: 400px;
   height: 100%;
@@ -11,15 +13,16 @@
 
 .estimates {
   padding: 0.5em;
-}
 
-.estimates .content {
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
+  .content {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
 
-.estimates .collapsible {
-  padding: 0.3em 0.5em;
+  .collapsibleButton {
+    padding: 0.3em 0.5em;
+    border: 1px solid var(--color-border);
+  }
 }
 
 .estimates .contentInfo,
@@ -27,13 +30,9 @@
   padding: 0.5em 0.7em;
 }
 
-.estimates .collapsible {
-  border: 1px solid #e2e2e2;
-}
-
 .valuationToolbar {
-  background-color: white;
-  border-top: 1px solid #e2e2e2;
+  background-color: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border);
   bottom: 0;
   width: 100%;
   padding: 0.5em;
@@ -52,12 +51,12 @@
   gap: 0.5rem;
   width: 100%;
   margin-top: 0.5em;
-}
 
-.actionBar button {
-  flex: 1;
-  font-size: 0.8em;
-  white-space: nowrap;
+  button {
+    flex: 1;
+    font-size: 0.8em;
+    white-space: nowrap;
+  }
 }
 
 .propertyData {

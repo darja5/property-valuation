@@ -1,0 +1,151 @@
+@import '../styles/variables';
+
+.propertyData button {
+  background-color: var(--color-bg-secundary);
+  color: var(--text-color);
+}
+.propertyInfo {
+  background-color: var(--color-bg-primary);
+  padding: 0.5em;
+  position: relative;
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 0px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
+  .collapsibleButton {
+    border-radius: 0px;
+    margin-top: 0;
+    border-top: 0;
+
+    &:first-of-type {
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      margin-top: 0.5em;
+      border: 1px solid var(--color-border);
+    }
+
+    &.open {
+      border-bottom-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+  }
+}
+
+.estimates .collapsibleContent,
+.collapsibleContent .contentInfo,
+.propertyInfo .collapsibleContent:last-child,
+.propertyInfo .collapsibleButton:last-of-type {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.generalInfo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 1.8rem;
+  font-size: 0.8rem;
+
+  .details {
+    position: relative;
+    bottom: 1px;
+  }
+
+  button {
+    width: fit-content;
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    float: right;
+    border: 1px solid var(--color-border-dark);
+  }
+}
+
+.collapsibleContent {
+  border: 1px solid var(--color-border);
+  border-top: none;
+  font-size: 0.7rem;
+}
+
+.contentInfo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 1fr repeat(1, 1fr);
+  gap: 0rem;
+  padding: 1em 1.2em;
+  background-color: var(--color-bg-primary);
+}
+
+.collapsibleButton {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-weight: inherit;
+  border: 1px solid var(--color-border);
+  color: black;
+
+  .label {
+    font-size: 0.7em;
+  }
+
+  &.open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .chevron {
+    padding-top: 2px;
+  }
+
+  .left {
+    float: left;
+    padding: 2px 15px 0 0;
+  }
+}
+
+.right {
+  float: right;
+}
+
+.info,
+.pin {
+  padding-left: 5px;
+  position: relative;
+  top: 2px;
+  width: 13px;
+}
+
+button:hover,
+button:focus {
+  border-color: var(--color-border);
+  outline: none;
+}
+
+button {
+  padding: 0.4em 1em;
+  border-radius: 5px;
+}
+
+.empty {
+  visibility: hidden;
+}
+
+.lastItem {
+  margin-left: auto;
+}
+
+.infoLabel,
+.infoValue {
+  white-space: nowrap;
+}
+
+.lastItem .details,
+.infoValue .details {
+  font-size: 0.6rem;
+  color: var(--text-color);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.contentInfo > div:nth-child(5n) {
+  text-align: right;
+}

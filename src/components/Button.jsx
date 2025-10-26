@@ -1,9 +1,9 @@
-import './Button.css';
+import './Button.scss';
 
-export default function Button({ icon, label, className }) {
+export default function Button({ icon, label, className, handleClick }) {
   return (
-    <button className={`${className}`}>
-      <img src={icon} alt={label} className="icon" width={16} />
+    <button onClick={handleClick} className={`${className}`}>
+      {icon && <img src={icon} alt={label} className="icon" width={16} />}
       {label}
     </button>
   );
