@@ -2,12 +2,16 @@ import './App.scss';
 import Button from './components/Button';
 import MapView from './components/MapView';
 import Sidebar from './components/SideBar';
+import Modal from './components/Modal';
 import { useRef, useState, useEffect } from 'react';
 
 function App() {
   const mapRef = useRef();
   const [markerPosition, setMarkerPosition] = useState(null);
   const [currentTheme, setCurrentTheme] = useState('light');
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalContent, setModalContent] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
 
   function toggleTheme() {
     let current = document.documentElement.getAttribute('data-theme');
@@ -15,6 +19,18 @@ function App() {
     document.documentElement.setAttribute('data-theme', newTheme);
     setCurrentTheme(newTheme);
     localStorage.setItem('theme', newTheme);
+  }
+
+  function openModal(title, content) {
+    setModalTitle(title);
+    setModalContent(content);
+    setModalIsOpen(true);
+  }
+
+  function closeModal() {
+    setModalIsOpen(false);
+    setModalContent('');
+    setModalTitle('');
   }
 
   function handleFlyTo(newLocation) {
@@ -42,7 +58,13 @@ function App() {
         />
       </header>
       <div className="main-layout">
-        <Sidebar handleFlyTo={handleFlyTo} />
+        <Modal
+          modalIsOpen={modalIsOpen}
+          modalContent={modalContent}
+          closeModal={closeModal}
+          modalTitle={modalTitle}
+        />
+        <Sidebar handleFlyTo={handleFlyTo} openModal={openModal} />
         <MapView
           mapRef={mapRef}
           markerPosition={markerPosition}

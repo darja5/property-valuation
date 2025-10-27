@@ -1,0 +1,41 @@
+@import '..//styles/variables';
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modalContent {
+  background: var(--color-bg-primary);
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 300px;
+  font-size: 0.9rem;
+  max-width: 500px;
+
+  .modalHeader {
+    text-transform: uppercase;
+  }
+
+  .icon {
+    padding-right: 0;
+  }
+
+  .modalCancel {
+    padding: 0.1rem;
+    width: 22px;
+    height: 22px;
+  }
+
+  .historyList {
+    padding: 0 1rem;
+  }
+}

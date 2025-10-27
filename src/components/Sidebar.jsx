@@ -1,5 +1,6 @@
 import PropertyInfo from './PropertyInfo';
 import { location } from '../data/mockdata';
+import { useState } from 'react';
 import Collapsible from './Collapsible';
 import Button from './Button';
 import './Sidebar.scss';
@@ -15,17 +16,41 @@ import Journal from '../icons/journal.svg';
 import Chat from '../icons/chat.svg';
 import Check from '../icons/check.svg';
 
-export default function Sidebar({ handleFlyTo }) {
+export default function Sidebar({ handleFlyTo, openModal }) {
   let currentTheme = localStorage.getItem('theme');
   const allProperties = [...location.land, ...location.units];
   const totalValue = allProperties.reduce(
     (sum, item) => sum + Number(item.value),
     0
   );
+  const [isEditing, setIsEditing] = useState(false);
+  const [inputValue, setInputValue] = useState(totalValue);
+
+  const handleEditClick = (e) => {
+    e.preventDefault();
+    setIsEditing(!isEditing);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      setIsEditing(false);
+      setInputValue(Number(e.target.value));
+    }
+  };
+
+  const handleBlur = (e) => {
+    setInputValue(Number(e.target.value));
+    setIsEditing(false);
+  };
+
   return (
     <div className="sidebar">
       <div className="propertyData">
-        <PropertyInfo location={location} handleFlyTo={handleFlyTo} />
+        <PropertyInfo
+          location={location}
+          handleFlyTo={handleFlyTo}
+          openModal={openModal}
+        />
         <div className="estimates">
           <Collapsible
             buttonLabel="Method"
@@ -43,6 +68,7 @@ export default function Sidebar({ handleFlyTo }) {
                 <div className="last-item">
                   {item.value.toLocaleString()} €
                   <img
+                    title="Estimated market value based on latest data"
                     src={currentTheme === 'light' ? Info : InfoWhite}
                     alt="Info"
                     className="info"
@@ -57,14 +83,27 @@ export default function Sidebar({ handleFlyTo }) {
 
       <div className="valuationToolbar">
         <div>
-          Value
+          <label for={'totalValue'}>Value</label>
           <div className="right">
-            <strong>{totalValue.toLocaleString()} €</strong>
+            {isEditing ? (
+              <input
+                id="totalValueInput"
+                autoFocus
+                type="number"
+                value={inputValue}
+                onChange={(e) => setInputValue(Number(e.target.value))}
+                onKeyDown={handleKeyDown}
+                onBlur={handleBlur}
+              />
+            ) : (
+              <strong>{inputValue.toLocaleString()} €</strong>
+            )}
             <img
               src={currentTheme === 'light' ? Edit : EditWhite}
               alt="Edit"
               className="edit"
               width={16}
+              onMouseDown={handleEditClick}
             />
           </div>
         </div>
@@ -73,21 +112,63 @@ export default function Sidebar({ handleFlyTo }) {
             icon={currentTheme === 'light' ? Back : BackWhite}
             label="Back"
             className="actionButton btnBack"
+            handleClick={() =>
+              openModal(
+                'Back',
+                <>
+                  <p>
+                    Clicking "Back" will return you to the previous screen or
+                    step. Any unsaved changes on this page will be lost, so make
+                    sure to save before going back.
+                  </p>
+                </>
+              )
+            }
           />
           <Button
             icon={Journal}
+            modal={true}
             label="Explanation"
             className="actionButton btnExplantion"
+            handleClick={() =>
+              openModal(
+                'Explanation',
+                <>
+                  <p>
+                    This valuation is based on the latest available market data
+                    and comparable property transactions in the area.
+                  </p>
+                  <p>
+                    Adjustments have been applied for location, land size, and
+                    building condition.
+                  </p>
+                </>
+              )
+            }
           />
           <Button
             icon={Chat}
+            modal={true}
             label="Remarks"
             className="actionButton btnRemarks"
+            handleClick={() =>
+              openModal(
+                'Remarks',
+                'Leave additional notes or comments about this valuation.'
+              )
+            }
           />
           <Button
+            modal={true}
             icon={Check}
             label="Confirm"
             className="actionButton btnConfirm"
+            handleClick={() =>
+              openModal(
+                'Confirm',
+                'Are you sure you want to confirm this valuation? This action cannot be undone.'
+              )
+            }
           />
         </div>
       </div>

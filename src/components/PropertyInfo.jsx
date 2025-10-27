@@ -12,7 +12,7 @@ import Plus from '../icons/plus.svg';
 import PlusWhite from '../icons/plus-white.svg';
 import Button from './Button';
 
-export default function PropertyInfo({ location, handleFlyTo }) {
+export default function PropertyInfo({ location, handleFlyTo, openModal }) {
   const generalLabels = ['reg. num', 'district', 'municipality', 'quarter'];
   let currentTheme = localStorage.getItem('theme');
   return (
@@ -31,6 +31,21 @@ export default function PropertyInfo({ location, handleFlyTo }) {
                   icon={currentTheme === 'light' ? History : HistoryWhite}
                   label="History"
                   className="btnHistory"
+                  handleClick={() =>
+                    openModal(
+                      'History',
+                      <ul className="historyList">
+                        <li>
+                          Oct 27, 2025 — Edited total value from 250,000 € to
+                          270,000 €
+                        </li>
+                        <li>
+                          Oct 24, 2025 — Added new land parcel (Reg. #8/123)
+                        </li>
+                        <li>Oct 21, 2025 — Created initial valuation</li>
+                      </ul>
+                    )
+                  }
                 />
               )}
               <label key={i} className="infoLabel">
@@ -109,7 +124,18 @@ export default function PropertyInfo({ location, handleFlyTo }) {
         icon={currentTheme === 'light' ? Plus : PlusWhite}
         label="Add valuation"
         className="btnAdd"
-      ></Button>
+        handleClick={() =>
+          openModal(
+            'Add Valuation',
+            <>
+              <p>
+                This feature allows you to add additional valuation data for the
+                property. Currently, no manual entries are required.
+              </p>
+            </>
+          )
+        }
+      />
     </div>
   );
 }
