@@ -31,12 +31,13 @@ export default function Sidebar({ handleFlyTo, openModal }) {
   const handleAddValuationClick = () => {
     setShowValuation(true);
     setValueMethod(0.89);
-    setInputValue((prev) => prev * 0.89);
+    setInputValue(totalValue * 0.89);
   };
 
   const handleOnCancelClick = (e) => {
     e.stopPropagation();
     setShowValuation(false);
+    setInputValue(totalValue);
   };
 
   const handleEditClick = (e) => {
