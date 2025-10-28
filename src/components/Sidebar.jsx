@@ -24,7 +24,20 @@ export default function Sidebar({ handleFlyTo, openModal }) {
     0
   );
   const [isEditing, setIsEditing] = useState(false);
+  const [velueMethod, setValueMethod] = useState(1);
   const [inputValue, setInputValue] = useState(totalValue);
+  const [showValuation, setShowValuation] = useState(false);
+
+  const handleAddValuationClick = () => {
+    setShowValuation(true);
+    setValueMethod(0.89);
+    setInputValue((prev) => prev * 0.89);
+  };
+
+  const handleOnCancelClick = (e) => {
+    e.stopPropagation();
+    setShowValuation(false);
+  };
 
   const handleEditClick = (e) => {
     e.preventDefault();
@@ -50,14 +63,20 @@ export default function Sidebar({ handleFlyTo, openModal }) {
           location={location}
           handleFlyTo={handleFlyTo}
           openModal={openModal}
+          onAddValuationClick={handleAddValuationClick}
         />
-        <div className="estimates">
+        <div
+          className="estimates"
+          style={showValuation ? { display: 'block' } : { display: 'none' }}
+        >
           <Collapsible
             buttonLabel="Method"
             icon={currentTheme === 'light' ? Cancel : CancelWhite}
+            handleOnCancelClick={handleOnCancelClick}
             properties={allProperties}
             columns={['reg. num', 'property', 'plZone', '', 'value']}
             iconLeft={false}
+            velueMethod={velueMethod}
             totalValue={totalValue}
             renderRow={(item) => (
               <>
@@ -77,7 +96,9 @@ export default function Sidebar({ handleFlyTo, openModal }) {
                 </div>
               </>
             )}
-          />
+          >
+            <label className="btnMethod">MS2024-05</label>
+          </Collapsible>
         </div>
       </div>
 
@@ -119,7 +140,7 @@ export default function Sidebar({ handleFlyTo, openModal }) {
                   <p>
                     Clicking "Back" will return you to the previous screen or
                     step. Any unsaved changes on this page will be lost, so make
-                    sure to save before going back.
+                    sure to confirm them before going back.
                   </p>
                 </>
               )

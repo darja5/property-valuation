@@ -70,8 +70,18 @@
   background-color: var(--color-bg-secundary);
   font-size: 0.8rem;
   font-weight: unset;
+
   &:hover,
   &:focus {
     border: 1px solid var(--color-border-dark);
   }
+}
+
+.btnMethod {
+  background-color: var(--color-bg-secundary-dark) !important;
+  font-weight: 600;
+  border-radius: 20px;
+  border: 1px solid var(--color-border-dark);
+  padding: 2px 5px;
+  font-size: 0.7rem;
 }

@@ -9,12 +9,15 @@ export default function Collapsible({
   buttonLabel,
   icon,
   iconLeft = true,
+  handleOnCancelClick,
+  velueMethod,
   properties,
   columns,
   totalValue,
   renderRow,
+  children,
 }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   let currentTheme = localStorage.getItem('theme');
 
@@ -44,9 +47,11 @@ export default function Collapsible({
 
         <span className="label">
           {buttonLabel} {iconLeft && ` (${properties.length})`}
+          {children && children}
         </span>
 
         <img
+          onClick={(e) => handleOnCancelClick(e)}
           className={`icon right ${iconLeft ? 'chevron' : ''}`}
           src={
             iconLeft
@@ -77,7 +82,7 @@ export default function Collapsible({
             <div className="contentSummary">
               Property value estimation
               <div className="right">
-                <strong>{totalValue.toLocaleString()} €</strong>
+                <strong>{(totalValue * velueMethod).toLocaleString()} €</strong>
               </div>
             </div>
           )}

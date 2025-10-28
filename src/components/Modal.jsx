@@ -1,6 +1,7 @@
 import './Modal.scss';
 import Button from './Button';
 import Cancel from '../icons/cancel.svg';
+import { useState } from 'react';
 
 export default function Modal({
   modalIsOpen,
@@ -8,8 +9,14 @@ export default function Modal({
   modalContent = 'Test content',
   modalTitle,
 }) {
+  const [remark, setRemark] = useState('');
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      closeModal();
+    }
+  };
   if (!modalIsOpen) return null;
-  console.log('Modal content:', modalContent);
   return (
     <div className="modalOverlay">
       <div className="modalContent">
@@ -23,7 +30,18 @@ export default function Modal({
         </div>
 
         <div className="modalBody">
-          <p>{modalContent}</p>
+          {modalTitle === 'Remarks' ? (
+            <textarea
+              id="remarksArea"
+              placeholder="Enter your remarks here..."
+              value={remark}
+              onChange={(e) => setRemark(e.target.value)}
+              onKeyDown={handleKeyDown}
+              autoFocus
+            />
+          ) : (
+            <p>{modalContent}</p>
+          )}
         </div>
 
         <div className="modalFooter">
